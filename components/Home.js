@@ -24,12 +24,10 @@ import { Font, AppLoading } from "expo";
 export default function Home({ navigation }) {
   const renderDiscoveryItem = ({ item }) => {
     return (
-      <TouchableOpacity
-      onPress={()=>navigation.navigate('Details',{item:item})}
-      >
+      <TouchableOpacity onPress={() => navigation.navigate("Details")}>
         <ImageBackground
           source={item.image}
-          style={styles.discoverItemPic}
+          style={[styles.discoverItemPic,{marginLeft:item.id === 'discovery-1'? 20: 0}]}
           imageStyle={styles.discoverItemPhoto}
         >
           <Text style={styles.discoverTextPhoto}>{item.title}</Text>
@@ -58,7 +56,6 @@ export default function Home({ navigation }) {
           style={styles.LearnMoreItemPic}
           imageStyle={styles.LearnMorePhoto}
         >
-      
           <Text style={styles.LearnMoreTextPhoto}>{item.title}</Text>
         </ImageBackground>
       </View>
@@ -205,25 +202,24 @@ const styles = StyleSheet.create({
     fontSize: 13,
     color: colors.darkGray,
   },
-  LearnMoreCon:{
-    marginLeft:20
+  LearnMoreCon: {
+    marginLeft: 20,
   },
-LearnMoreItemPic:{
-    width:170,
-    height:180,
+  LearnMoreItemPic: {
+    width: 170,
+    height: 180,
     justifyContent: "flex-end",
     //marginRight: 20,
     paddingHorizontal: 10,
     paddingVertical: 20,
     marginTop: 20,
-},
-LearnMorePhoto:{
-    borderRadius:20,
-   
-},
-LearnMoreTextPhoto:{
+  },
+  LearnMorePhoto: {
+    borderRadius: 20,
+  },
+  LearnMoreTextPhoto: {
     fontSize: 18,
     color: colors.white,
-},
-LearnMoreWrapper:{},
+  },
+  LearnMoreWrapper: {},
 });
