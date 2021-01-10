@@ -2,7 +2,6 @@ import React from "react";
 import {
   View,
   Text,
-  Button,
   StyleSheet,
   Image,
   SafeAreaView,
@@ -12,19 +11,18 @@ import {
 import colors from "../assets/colors/colors";
 import Feather from "react-native-vector-icons/Feather";
 import activitiesData from "../assets/data/activitiesData";
-import discoverCategoriesData from "../assets/data/discoverCategoriesData";
 import learnMoreData from "../assets/data/learnMoreData";
 import discoverData from "../assets/data/discoverData";
 import profile from "../assets/images/person.png";
-import { color } from "react-native-reanimated";
 import Entypo from "react-native-vector-icons/Entypo";
 import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
-import { Font, AppLoading } from "expo";
 
 export default function Home({ navigation }) {
   const renderDiscoveryItem = ({ item }) => {
     return (
-      <TouchableOpacity onPress={() => navigation.navigate("Details")}>
+      <TouchableOpacity onPress={() => navigation.navigate("Details",{
+          item:item,
+      })}>
         <ImageBackground
           source={item.image}
           style={[styles.discoverItemPic,{marginLeft:item.id === 'discovery-1'? 20: 0}]}
